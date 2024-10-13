@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-const about = () => {
+const About = () => {
   return (
     <div className="px-2 py-10 md:px-4 lg:py-16">
       {/* header */}
@@ -13,7 +13,7 @@ const about = () => {
 
         <h2 className="text-lg md:text-xl tracking-wider">
           We help you preserve history with our archival enclosures...to benefit
-          the future
+          the future.
         </h2>
 
         <p className="md:tracking-wider text-[14px] md:text-[16px] leading-6 md:leading-8">
@@ -42,4 +42,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
