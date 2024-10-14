@@ -18,7 +18,8 @@ const signIn = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormValues({
@@ -27,28 +28,41 @@ const signIn = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form values and update error state
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/users/signup", formValues);
+      console.log("sign up success", response.data);
 
-    const { email, firstName, lastName, password, checkbox } = formValues;
-
-    // Check if any field is empty
-    if (
-      email === "" ||
-      password === "" ||
-      firstName === "" ||
-      lastName === "" ||
-      checkbox === false
-    ) {
-      toast.error("Please fill in all fields"); // Display error message
-    } else {
-      toast.success("Form submitted successfully!"); // Display success message
-      setFormValues(initialValues);
+      const { email, firstName, lastName, password, checkbox } = formValues;
+      if (Object.keys(validate(formValues)).length > 0) {
+        toast.error("Please fill in all fields correctly");
+        return;
+      }
+      // Check if any field is empty
+      if (
+        email === "" ||
+        password === "" ||
+        firstName === "" ||
+        lastName === "" ||
+        checkbox === false
+      ) {
+        toast.error("Please fill in all fields"); // Display error message
+      } else {
+        toast.success("Form submitted successfully!"); // Display success message
+        setFormValues(initialValues);
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log("signup failed", error.message);
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
+    // Validate form values and update error state
   };
 
   useEffect(() => {
@@ -82,7 +96,11 @@ const signIn = () => {
   return (
     <div>
       <Toaster />
+
       <form action="form" onSubmit={handleSubmit} className="w-full md:w-3/4">
+        <div>
+          <h1>{loading ? "processing...." : "signUp"}</h1>
+        </div>
         <div className="w-full">
           <div className="py-14 lg:py-16 space-y-6">
             <div className="w-full flex flex-col md:flex-row items-start justify-start md:justify-between gap-3">
