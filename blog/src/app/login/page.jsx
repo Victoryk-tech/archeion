@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 const LogIn = () => {
   const initialValues = {
@@ -135,9 +136,17 @@ const LogIn = () => {
             Conditions.
           </label>
         </div>
+
         {formErrors.checkbox && (
           <p className="text-sm text-red-600 mt-1">{formErrors.checkbox}</p>
         )}
+
+        <div className="flex items-center justify-start text-sm space-x-2 text-sm">
+          <p>Do not have an account?</p>{" "}
+          <Link href="/signup" className="red cursor-pointer">
+            signUp
+          </Link>
+        </div>
 
         <button
           type="submit"

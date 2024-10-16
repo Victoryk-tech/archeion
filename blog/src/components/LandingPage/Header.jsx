@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoPersonOutline, IoSearchOutline } from "react-icons/io5";
 import {
   RiFacebookBoxFill,
   RiInstagramLine,
   RiLinkedinBoxLine,
   RiMenu4Fill,
+  RiProfileLine,
 } from "react-icons/ri";
 
 import Link from "next/link";
@@ -47,6 +48,9 @@ const Header = () => {
           <RiInstagramLine />
           <RiFacebookBoxFill />
           <RiLinkedinBoxLine />
+          <Link href="/login">
+            <IoPersonOutline />
+          </Link>
         </div>
       </div>
 

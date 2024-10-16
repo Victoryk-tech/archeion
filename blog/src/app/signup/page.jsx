@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const signIn = () => {
   const initialValues = {
     firstName: "",
@@ -172,6 +173,7 @@ const signIn = () => {
             Coderina will use, process and store your personal data at all times
             in compliance with our Privacy Policy.
           </h3>
+
           <div
             className={`${
               formValues.checkbox === false ? " text-red-500 " : "text-black"

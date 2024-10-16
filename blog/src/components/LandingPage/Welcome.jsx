@@ -14,15 +14,17 @@ const Welcome = () => {
           />
         </div>
         <div className="space-y-6  pb-9 md:pb-0 ">
-          <h1 className="text-[32px] font-poppin font-medium">WELCOME</h1>
+          <h1 className="text-[32px] font-poppin font-medium">
+            {" "}
+            Welcome to Archieon!
+          </h1>
           <p className="text-sm leading-[20.7px]">
-            "Vivamus id interdum diam. Aliquam condimentum nulla vitae quam
-            pharetra,
-            <br /> vel mollis enim pretium. Donec tristique varius nulla non
-            elementum Vivamus id interdum diam. <br /> Aliquam condimentum nulla
-            vitae quam pharetra,
-            <br /> vel mollis enim pretium. Donec tristique varius nulla non
-            elementum."
+            At Archieon, we’re all about exploring ideas <br />
+            that inspire, educate, and provoke thought. Whether it’s technology,{" "}
+            <br /> lifestyle, culture, or personal development, our goal is to
+            dive deep <br /> into the topics that matter. Like a carefully
+            crafted work of art, <br /> every post is designed to offer insight,
+            engage curiosity, and spark conversation.
           </p>
           <button
             to="login"
@@ -35,15 +37,15 @@ const Welcome = () => {
 
       <div className=" flex flex-col pt-9 md:pt-0 md:flex-row items-center justify-between lg:pl-32 ">
         <div className="space-y-6 ">
-          <h1 className="text-[32px] font-poppin font-medium">WELCOME</h1>
+          <h1 className="text-[32px] font-poppin font-medium">Our Believe</h1>
           <p className="text-sm leading-[20.7px]">
-            "Vivamus id interdum diam. Aliquam condimentum nulla vitae quam
-            pharetra,
-            <br /> vel mollis enim pretium. Donec tristique varius nulla non
-            elementum Vivamus id interdum diam. <br /> Aliquam condimentum nulla
-            vitae quam pharetra,
-            <br /> vel mollis enim pretium. Donec tristique varius nulla non
-            elementum."
+            We believe that knowledge, much like an intricate piece <br /> of
+            architecture, is built layer <br /> by layer. Here, you’ll find a
+            mix of in-depth articles, practical advice, <br /> and fresh
+            perspectives—all aimed at helping you expand your horizons <br />{" "}
+            and enhance your journey. So, welcome to Archieon—where ideas take
+            shape. <br /> Dive in, explore, and let’s build something meaningful
+            together.
           </p>
           <button
             to="login"

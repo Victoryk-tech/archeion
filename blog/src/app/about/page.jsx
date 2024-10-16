@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-
+import Image from "next/image";
 const About = () => {
   return (
-    <div className="px-2 py-10 md:px-4 lg:py-16">
+    <div className="px-2 py-10 md:px-4 lg:px-28">
       {/* header */}
       <div></div>
-      <div className="lg:px-28 space-y-1">
+      <div className=" space-y-1">
         <h1 className="text-lg md:text-2xl lg:text-4xl font-semibold">
           About Us
         </h1>
@@ -37,6 +37,30 @@ const About = () => {
           ready-to-use enclosures, you can trust you're getting unrivaled
           quality with our time-saving products.
         </p>
+      </div>
+
+      <div className="py-10 mt-24 shadow-md px-2">
+        <h1 className="font-medium lg:text-xl">
+          Please reach out to our team for your custom preservation projects or
+          for more information.
+        </h1>
+
+        <div className="flex flex-col items-center justify-center space-y-10 pt-20">
+          <div className="rounded-xl">
+            <Image
+              src="https://plus.unsplash.com/premium_photo-1677567996070-68fa4181775a?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="books"
+              width={102}
+              height={100}
+            />
+          </div>
+
+          <div className="space-y-4 text-center">
+            <h1 className="font-medium">Kemele Victory</h1>
+            <h3>Account Manager</h3>
+            <p className="text-sm">kemelevictory3802@gmail.com</p>
+          </div>
+        </div>
       </div>
     </div>
   );
