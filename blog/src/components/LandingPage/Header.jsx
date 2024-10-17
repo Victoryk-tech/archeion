@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { IoPersonOutline, IoSearchOutline } from "react-icons/io5";
+import { IoPencil, IoPersonOutline, IoSearchOutline } from "react-icons/io5";
 import {
   RiFacebookBoxFill,
   RiInstagramLine,
@@ -41,8 +41,10 @@ const Header = () => {
           </p>
         </div>
 
-        <div className="flex md:hidden items-center justify-center space-x-3 text-3xl md:text-xl">
-          <RiMenu4Fill />
+        <div className="flex md:hidden items-center justify-center text-lg font-medium">
+          {/* <RiMenu4Fill /> */}
+          <IoPencil />
+          <p>write</p>
         </div>
         <div className="hidden md:flex items-center justify-center space-x-2 text-xl">
           <RiInstagramLine />
@@ -65,9 +67,9 @@ const Header = () => {
         <Link href="/about" onClick={scrollToTop}>
           <p className={isActive ? activeLink : normalLink}>About Us</p>
         </Link>
-        <Link href="/contact" onClick={scrollToTop}>
+        {/* <Link href="/contact" onClick={scrollToTop}>
           <p className={isActive ? activeLink : normalLink}>Contact Us</p>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

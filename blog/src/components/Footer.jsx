@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <div className=" border-black border-t-[1px] py-11">
       <div className="px-2 lg:px-36 py-12 md:py-16  flex items-start justify-between ">
-        <div className="flex flex-col items-start justify-between">
+        <div className="flex flex-col items-center justify-between">
           <div className="md:text-center space-y-1">
-            <h1 className="md:text-2xl font-medium">ARCHEION</h1>
-            <p className="lg:tracking-[0.1rem] text-sm">
+            <h1 className="md:text-2xl font-bold">ARCHEION</h1>
+            <p className="lg:tracking-[0.1rem] text-[14px] md:text-sm lg:text-lg ">
               MAGAZINE AND BLOG THEME
             </p>
           </div>
@@ -29,8 +29,10 @@ const Footer = () => {
             </a>
           </nav>
         </div>
-        <nav className="hidden lg:flex flex-col space-y-3 font-bold">
-          <a href="#">News</a>
+        <nav className="flex flex-col space-y-3">
+          <a href="#" className=" font-bold text-lg">
+            News
+          </a>
           <a href="#">Sport</a>
           <a href="#">Business</a>
           <a href="#">Opinion</a>
@@ -44,7 +46,7 @@ const Footer = () => {
           <a href="#">Fast Delivery</a>
         </nav>
 
-        <nav className="flex flex-col space-y-3">
+        <nav className="hidden md:flex flex-col space-y-3">
           <h2 className="font-bold text-lg">Product & services</h2>
           <p>eBooks</p>
           <p>ePaper</p>
