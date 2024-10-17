@@ -76,7 +76,8 @@ const LatestBooks = () => {
                     <Image
                       src={data.image}
                       alt=""
-                      fill
+                      height={102}
+                      width={200}
                       className="w-full h-full object-contain rounded-xl"
                     />
                   </div>
