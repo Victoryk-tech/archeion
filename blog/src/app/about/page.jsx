@@ -18,7 +18,7 @@ const About = () => {
 
         <p className="md:tracking-wider text-[14px] md:text-[16px] leading-6 md:leading-8">
           Archival Products was born in the 1980s out of a collaboration between
-          our company and the nation's leading experts in library preservation
+          our company and the nation`s leading experts in library preservation
           and conservation. Since then, the most prestigious academic libraries,
           museums, and archives have trusted our products to protect their most
           valuable collections.
@@ -29,12 +29,12 @@ const About = () => {
           imaging plates, and countless other items. In addition to many
           standard sizes, we can create custom sizes available for many of our
           enclosures to properly fit odd or over-sized items. If you have a
-          special project, Archival Products is your partner to find (or create)
+          special project, Archival Products is your partner to find or create
           just the right product to suit your needs. In fact, many of our
           products were originally developed in collaboration with our
           customers. Whether you have expert conservators you want to free up
           for working on high-level projects, or your organization simply needs
-          ready-to-use enclosures, you can trust you're getting unrivaled
+          ready-to-use enclosures, you can trust you`re getting unrivaled
           quality with our time-saving products.
         </p>
       </div>

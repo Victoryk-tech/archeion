@@ -5,8 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-
-const signIn = () => {
+const Page = () => {
   const initialValues = {
     firstName: "",
 
@@ -69,9 +68,9 @@ const signIn = () => {
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+      // console.log(formValues);
     }
-  }, [formErrors]);
+  }, [formErrors, isSubmit]);
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -205,4 +204,4 @@ const signIn = () => {
   );
 };
 
-export default signIn;
+export default Page;

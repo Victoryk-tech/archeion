@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 
 const Welcome = () => {
@@ -7,9 +8,10 @@ const Welcome = () => {
     <div className="w-full px-2 md:px-14 lg:px-16 py-8">
       <div className=" flex flex-col md:flex-row items-center justify-between">
         <div className="w-full lg:w-[600px] h-[400px]">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1676452443154-419e7de186f7?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
+            fill
             className="w-full h-full object-contain"
           />
         </div>
@@ -56,9 +58,10 @@ const Welcome = () => {
         </div>
 
         <div className="w-full lg:w-[500px] h-[400px] lg:pr-10 rounded-3xl ">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1676033923657-89b92b8d64d0?q=80&w=2014&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
+            fill
             className="w-full h-full object-contain rounded-3xl"
           />
         </div>

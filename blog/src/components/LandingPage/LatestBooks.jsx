@@ -8,7 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaCircleArrowRight } from "react-icons/fa6";
 const LatestBooks = () => {
-  const [caseStudy, setCaseStudy] = useState("shirt");
+  const [caseStudy, setCaseStudy] = useState("History");
   console.log(book);
 
   const activeLink =
@@ -35,7 +35,7 @@ const LatestBooks = () => {
   return (
     <div className="px-2 sm:px-4 lg:px-10 py-8">
       <div className=" space-y-3">
-        <h1 className="text-[22px] font-bold lg:text-[24px] lg:leading-[38.9px]">
+        <h1 className="text-[20px] font-semibold lg:text-[20px]">
           Latest Books
         </h1>
       </div>
@@ -73,9 +73,10 @@ const LatestBooks = () => {
                   className="w-full  sm:w-48  lg:w-72 md:h-[25rem] text-sm md:text-normal shadow-sm"
                 >
                   <div className="h-48 md:h-48 lg:h-[13rem] w-full ">
-                    <img
+                    <Image
                       src={data.image}
                       alt=""
+                      fill
                       className="w-full h-full object-contain rounded-xl"
                     />
                   </div>
@@ -85,7 +86,7 @@ const LatestBooks = () => {
                       {data.date}
                     </h3>
                     <h3 className=" text-[12px] font-normal">
-                      "{data.description}"
+                      `{data.description}`
                     </h3>
 
                     <a
