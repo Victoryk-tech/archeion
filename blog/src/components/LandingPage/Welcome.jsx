@@ -11,7 +11,8 @@ const Welcome = () => {
           <Image
             src="https://images.unsplash.com/photo-1676452443154-419e7de186f7?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            fill
+            width={500}
+            height={400}
             className="w-full h-full object-contain"
           />
         </div>
@@ -61,7 +62,8 @@ const Welcome = () => {
           <Image
             src="https://images.unsplash.com/photo-1676033923657-89b92b8d64d0?q=80&w=2014&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            fill
+            width={500}
+            height={400}
             className="w-full h-full object-contain rounded-3xl"
           />
         </div>
