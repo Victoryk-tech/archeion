@@ -136,7 +136,7 @@ export default function Book() {
                     <p className="text-customPurple font-bold text-xs mt-4">
                       {post.date}
                     </p>
-                    <h1 className="text-xl font-bold py-[10px] ">
+                    <h1 className="text-lg font-bold py-[10px] ">
                       {post.title}
                     </h1>
                     <p className="text-customGrey">{post.headingExcept}</p>
