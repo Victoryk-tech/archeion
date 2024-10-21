@@ -29,7 +29,7 @@ export default function BookDetails({ params }) {
         <Image
           src={book.blogImg}
           alt={book.title}
-          className="w-full md:w-80 md:h-80 rounded"
+          className="w-full md:w-80 md:h-80 rounded my-4"
         />
         <div>
           <h4 className="font-semibold">Abstract</h4>
