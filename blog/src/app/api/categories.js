@@ -509,10 +509,7 @@ export const AllBlogPosts = [
               <p key="background">Background to Study</p>,
             ],
           },
-          {
-            verseId: 2,
-            text: "And on the seventh day God ended His work which He had done.",
-          },
+
           // More verses...
         ],
       },
