@@ -1,11 +1,12 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import { RecentBlogPosts, AllBlogPosts } from "@/app/api/categories";
 
-import Pagination from "@/components/pagnation";
-const MainBlog = () => {
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation"; // use usePathname instead of useRouter
+import { RecentBlogPosts, AllBlogPosts } from "@/app/api/categories";
+export default function Book() {
+  const pathname = usePathname(); // Replaces useRouter
+
   return (
     <div>
       <main className="px-2 md:px-4 lg:px-16">
@@ -114,36 +115,38 @@ const MainBlog = () => {
         </section>
 
         <section className="md:p-0 my-[3rem]">
+          {/* <h1>category {pathname}</h1> Adjusted usage */}
           <h1 className="py-[2rem] text-xl font-bold">
             {AllBlogPosts[0].category}
           </h1>
           <article className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
             {AllBlogPosts.map((post) => (
               <div key={post.id}>
-                <div className="w-full">
-                  <Image
-                    src={post.blogImg}
-                    alt="blog news"
-                    width={120}
-                    height={120}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-customPurple font-bold text-xs mt-4">
-                    {post.date}
-                  </p>
-                  <h1 className="text-xl font-bold py-[10px] ">{post.title}</h1>
-                  <p className="text-customGrey">{post.headingExcept}</p>
-                </div>
+                <Link href={`/books/${post.id}`}>
+                  <div className="w-full">
+                    <Image
+                      src={post.blogImg}
+                      alt="blog news"
+                      width={120}
+                      height={120}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-customPurple font-bold text-xs mt-4">
+                      {post.date}
+                    </p>
+                    <h1 className="text-xl font-bold py-[10px] ">
+                      {post.title}
+                    </h1>
+                    <p className="text-customGrey">{post.headingExcept}</p>
+                  </div>
+                </Link>
               </div>
             ))}
           </article>
         </section>
-        <Pagination />
       </main>
     </div>
   );
-};
-
-export default MainBlog;
+}

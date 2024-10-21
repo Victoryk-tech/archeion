@@ -61,7 +61,7 @@ const Header = () => {
         <Link href="/" onClick={scrollToTop}>
           <p className={isActive ? activeLink : normalLink}>Home</p>
         </Link>
-        <Link href="/news" onClick={scrollToTop}>
+        <Link href="/books" onClick={scrollToTop}>
           <p className={isActive ? activeLink : normalLink}>News</p>
         </Link>
         <Link href="/about" onClick={scrollToTop}>

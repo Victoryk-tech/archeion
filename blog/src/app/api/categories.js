@@ -6,7 +6,7 @@ import recentBlog4 from "@/../../public/assets/recentBlog4.svg";
 export const RecentBlogPosts = {
   id: 1,
   category: "Recent Blog Posts",
-  title1: "UX review presentations",
+  title1: "U1 review presentations",
   blogImg1: recentBlog1,
   headingExcept1:
     "How do you create compelling presentations that wow your colleagues and impress your managers?",
@@ -33,7 +33,7 @@ export const RecentBlogPosts = {
 
 export const AllBlogPosts = [
   {
-    id: 1,
+    id: "1",
     category: "All Blog Posts",
     title: "UX review presentations",
     blogImg: recentBlog3,
@@ -42,7 +42,7 @@ export const AllBlogPosts = [
     date: "Olivia Rhye • 1 Jan 2023",
   },
   {
-    id: 2,
+    id: "2",
     category: "All Blog Posts",
     title: "UX review presentations",
     blogImg: recentBlog3,
@@ -51,7 +51,7 @@ export const AllBlogPosts = [
     date: "Olivia Rhye • 1 Jan 2023",
   },
   {
-    id: 3,
+    id: " 3",
     category: "All Blog Posts",
     title: "UX review presentations",
     blogImg: recentBlog3,
@@ -60,7 +60,7 @@ export const AllBlogPosts = [
     date: "Olivia Rhye • 1 Jan 2023",
   },
   {
-    id: 4,
+    id: " 4",
     category: "All Blog Posts",
     title: "UX review presentations",
     blogImg: recentBlog3,
@@ -69,7 +69,7 @@ export const AllBlogPosts = [
     date: "Olivia Rhye • 1 Jan 2023",
   },
   {
-    id: 5,
+    id: "5",
     category: "All Blog Posts",
     title: "UX review presentations",
     blogImg: recentBlog3,
@@ -78,7 +78,7 @@ export const AllBlogPosts = [
     date: "Olivia Rhye • 1 Jan 2023",
   },
   {
-    id: 6,
+    id: "6",
     category: "All Blog Posts",
     title: "UX review presentations",
     blogImg: recentBlog3,

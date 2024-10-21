@@ -14,6 +14,7 @@ import LatestBooks from "@/components/LandingPage/LatestBooks";
 import Welcome from "@/components/LandingPage/Welcome";
 
 import MainBlog from "@/components/LandingPage/MainBlog";
+import Book from "./books/page";
 
 export default function Home() {
   const banners = [BlogBanner1, BlogBanner2, BlogBanner3];
@@ -83,9 +84,10 @@ export default function Home() {
 
       {/* Main Content */}
       <Innovation />
-      <MainBlog />
+      {/* <MainBlog /> */}
 
-      <LatestBooks />
+      {/* <LatestBooks /> */}
+      <Book />
       <Welcome />
     </div>
   );
