@@ -283,8 +283,4 @@ export async function DELETE(req) {
   }
 }
 
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
+
