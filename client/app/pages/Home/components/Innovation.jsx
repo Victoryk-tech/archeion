@@ -2,7 +2,7 @@ import React from "react";
 
 const Innovation = () => {
   return (
-    <div className="text-center space-y-3 text-zinc-500 text-[16px] lg:text-[20px] font-normal py-10 px-2 md:px-4 md:py-16 lg:px-16 ">
+    <div className="text-center space-y-3 text-zinc-500 text-[16px] lg:text-[20px] font-normal py-10  md:py-16 ">
       <h1 className="text-lg md:text-xl lg:text-3xl font-medium lg:font-normal">
         INNOVATION COMBINED WITH HANDCRAFTED PERFECTION
       </h1>

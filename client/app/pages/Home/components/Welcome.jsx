@@ -5,7 +5,7 @@ import React from "react";
 
 const Welcome = () => {
   return (
-    <div className=" w-full px-2 md:px-14 lg:px-16 py-8">
+    <div className=" w-full py-8">
       <div className=" flex flex-col md:flex-row items-center justify-between">
         <div className="w-full lg:w-[600px] h-[400px]">
           <Image
@@ -18,7 +18,6 @@ const Welcome = () => {
         </div>
         <div className="space-y-6  pb-9 md:pb-0 ">
           <h1 className="text-[32px] font-poppin font-medium">
-           
             Welcome to Archieon!
           </h1>
           <p className="text-sm leading-[20.7px]">

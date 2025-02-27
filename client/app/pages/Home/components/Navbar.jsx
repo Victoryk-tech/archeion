@@ -77,9 +77,8 @@ const Navbar = () => {
           </div>
 
           <div className="flex md:hidden items-center justify-center text-lg font-medium">
-            {/* <RiMenu4Fill /> */}
-            <IoPencil />
-            <p>write</p>
+            <RiMenu4Fill />
+           
           </div>
           <div className="hidden md:flex items-center justify-center space-x-2 text-xl">
             <RiInstagramLine />

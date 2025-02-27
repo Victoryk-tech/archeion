@@ -31,7 +31,7 @@ const page = () => {
       <Navbar />
       <Hero />
       {homeContents1.map(({ color, section }, index) => (
-        <div style={{ background: color }} key={`${section}-${index}`}>
+        <div style={{ background: color }} key={`${section}-${index}`} className="px-2 md:px-6 lg:px-16">
           <div className="max-w-[100rem] mx-auto">{section}</div>
         </div>
       ))}

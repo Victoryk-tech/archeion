@@ -15,7 +15,7 @@ const MainBlog = () => {
           <article className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mb-[4rem] md:mb-0 ">
             {/* first video */}
             <div>
-              <div className="relative w-full h-0 pb-[46.25%] md:pb-[40.25%]">
+              <div className="relative w-full h-0 pb-[56.25%] md:pb-[46.25%]">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src="https://www.youtube.com/embed/KnfZLes_Z5I?start=12"
@@ -89,7 +89,7 @@ const MainBlog = () => {
             </div>
           </article>
           <article className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mt-6">
-            <div className="relative w-full h-0 pb-[46.25%] md:pb-[25.25%]">
+            <div className="relative w-full h-0 pb-[56.25%] md:pb-[25.25%]">
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
                 src="https://www.youtube.com/embed/KnfZLes_Z5I?start=12"
