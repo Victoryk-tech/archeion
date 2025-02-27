@@ -41,7 +41,7 @@ const About = () => {
             is personal, it welcomes readers who are eager to learn, reflect,
             and engage with thought-provoking content. If you want to explore
             new perspectives without the distractions of a crowded platform,
-            this is the place for you. Subscribe today to receive insightful, '
+            this is the place for you. Subscribe today to receive insightful,
             well-crafted content delivered directly to you.
           </p>
         </div>

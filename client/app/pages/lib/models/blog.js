@@ -21,10 +21,10 @@ const BlogSchema = new mongoose.Schema({
   body: { type: String },
   category: {
     type: String,
-    enum: ["new Articles", "publications", "gallery"],
+    enum: ["All Articles", "History", "Designs", "Programming"],
     required: true,
   },
-  images: [String], // For gallery posts
+  images: [String], 
 
   likes: { type: [String], default: [] },
   comments: [CommentSchema], // Nested comments

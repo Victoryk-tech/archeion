@@ -5,7 +5,7 @@ import { Input, Spin } from "antd";
 import toast, { Toaster } from "react-hot-toast";
 import MessageModal from "./MessageModal";
 
-const Subscribers = ({ register }) => {
+const Subscribers = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");

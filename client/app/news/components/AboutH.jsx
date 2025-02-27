@@ -19,7 +19,7 @@ const AboutH = () => {
       <div className="flex items-center justify-center py-10">
         <nav className="flex items-center justify-between space-x-7 lg:space-x-10 text-[#d1d1d1] border-b-[1px] border-[#d1d1d1] py-4">
           <ul>All Articles</ul>
-          <ul>News</ul>
+          <ul>History</ul>
           <ul>Designs</ul>
           <ul>Programming</ul>
         </nav>

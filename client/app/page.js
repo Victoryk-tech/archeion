@@ -7,6 +7,7 @@ import Innovation from "./pages/Home/components/Innovation";
 import Welcome from "./pages/Home/components/Welcome";
 import Book from "./pages/books/page";
 import Subscribers from "./pages/Home/components/Subscribers";
+import MainBlog from "./pages/Home/components/MainBlog";
 
 const page = () => {
   const homeContents1 = [
@@ -15,7 +16,7 @@ const page = () => {
     },
 
     {
-      section: <Book />,
+      section: <MainBlog />,
     },
     {
       section: <Welcome />,
