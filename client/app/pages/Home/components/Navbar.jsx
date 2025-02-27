@@ -19,7 +19,7 @@ const Navbar = () => {
   const [display, setDisplay] = useState(false);
   const links = [
     { label: "Home", path: "/" },
-    { label: "News", path: "/news" },
+    { label: "Blog", path: "/news" },
     { label: "About Us", path: "/About" },
   ];
 

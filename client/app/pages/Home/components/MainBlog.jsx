@@ -7,15 +7,15 @@ import { RecentBlogPosts, AllBlogPosts } from "../../lib/categories";
 const MainBlog = () => {
   return (
     <div>
-      <main className="px-2 md:px-4 lg:px-16">
+      <main className="">
         <section>
           <h1 className="mb-[2rem] text-xl font-bold">
-            {RecentBlogPosts.category}
+            Recent Blog Posts
           </h1>
           <article className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mb-[4rem] md:mb-0 ">
             {/* first video */}
             <div>
-              <div className="relative w-full h-0 pb-[56.25%] md:pb-[46.25%]">
+              <div className="relative w-full  h-0 pb-[56.25%] md:pb-[42.25%]">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src="https://www.youtube.com/embed/KnfZLes_Z5I?start=12"
