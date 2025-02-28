@@ -1,144 +1,170 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { RecentBlogPosts, AllBlogPosts } from "../../lib/categories";
+import { BlogContext } from "../../../contexts/BlogContext";
+import VideoEmbed from "./VideoEmbeded";
+import StarLoader from "../../lib/shared/StarLoader";
 
 const MainBlog = () => {
+  const { blogs, loading, formatTime } = useContext(BlogContext);
+  const tenBlogs = blogs.slice(0, 10);
+
+
+  if (loading) {
+    return (
+     <StarLoader/>
+    );
+  }
   return (
     <div>
       <main className="">
         <section>
-          <h1 className="mb-[2rem] text-xl font-bold">
-            Recent Blog Posts
-          </h1>
+          <h1 className="mb-[2rem] text-xl font-bold">Recent Blog Posts</h1>
           <article className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mb-[4rem] md:mb-0 ">
-            {/* first video */}
-            <div>
-              <div className="relative w-full  h-0 pb-[56.25%] md:pb-[42.25%]">
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/KnfZLes_Z5I?start=12"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <div className="w-full h-[172px] ">
-                <p className="text-customPurple font-bold text-xs mt-4">
-                  Kemele Victory • 1 Nov 2023
-                </p>
-                <h1 className="text-xl font-bold py-[8px]">
-                  Variable Declaration
-                </h1>
-                <p className="text-customGrey">
-                  This video teaches the standard ways of initializing variables
-                  and the three keywords recognized by Javascript used to
-                  declare variables.
-                </p>
-              </div>
+            {/*  first blog*/}
+            <div className="w-full">
+              {tenBlogs.slice(0, 1).map((post) => (
+                <div key={post.id}>
+                  {post.video ? (
+                    <div className="relative w-full h-0 pb-[56.25%] md:pb-[53.25%]">
+                      <VideoEmbed videoUrl={post.video} />
+                    </div>
+                  ) : (
+                    <div className="">
+                      <Image
+                        src={
+                          (post.images && post.images[0]) ||
+                          "/default-image.jpg"
+                        }
+                        alt={post.title}
+                        width={120}
+                        height={120}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+
+                  <div className="w-full h-[172px] ">
+                    <p className="text-customPurple font-bold text-xs mt-4">
+                      Kemele Victory • {formatTime(post.createdAt)}
+                    </p>
+                    <h1 className="text-xl font-bold py-[8px]">{post.title}</h1>
+                    <p className="text-customGrey">{post.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="flex flex-col  gap-10 sm:gap-6  ">
-              <div className="flex flex-col gap-4 md:flex-row md:w-[580px] md:h-[150px] ">
-                <div className="md:w-[100%]">
-                  <Image
-                    src={RecentBlogPosts.blogImg2}
-                    alt="blog news"
-                    width={120}
-                    height={120}
-                    className="w-full h-full object-cover"
-                  />
+            <div className="flex flex-col gap-10 sm:gap-8  ">
+              {/* second blog*/}
+              {tenBlogs.slice(1, 3).map((post) => (
+                <div
+                  key={post.id}
+                  className="flex flex-col gap-4 md:flex-row md:w-[580px] md:h-[150px] "
+                >
+                  {post.video ? (
+                    <div className="relative w-full md:w-[54%]  h-0 pb-[56.25%] md:pb-[32%]">
+                      <VideoEmbed videoUrl={post.video} />
+                    </div>
+                  ) : (
+                    <div className="w-full md:w-[54%]">
+                      <Image
+                        src={
+                          (post.images && post.images[0]) ||
+                          "/default-image.jpg"
+                        }
+                        alt={post.title}
+                        width={120}
+                        height={140}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+
+                  <div className="flex flex-col w-[220px]">
+                    <p className="text-customPurple font-bold text-xs">
+                      Kemele Victory • {formatTime(post.createdAt)}
+                    </p>
+                    <h1 className="text-xl font-bold py-[8px]">
+                      {post.title}
+                    </h1>
+                    <p className="text-customGrey">{post.description}</p>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-customPurple font-bold text-xs">
-                    {RecentBlogPosts.date2}
-                  </p>
-                  <h1 className="text-xl font-bold  py-[8px]">
-                    {RecentBlogPosts.title2}
-                  </h1>
-                  <p className="text-customGrey">
-                    {" "}
-                    {RecentBlogPosts.headingExcept2}
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 md:flex-row md:w-[580px] md:h-[150px]">
-                <div className="md:w-[100%]">
-                  <Image
-                    src={RecentBlogPosts.blogImg3}
-                    alt="blog news"
-                    width={120}
-                    height={120}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-customPurple font-bold text-xs ">
-                    {RecentBlogPosts.date3}
-                  </p>
-                  <h1 className="text-xl font-semibold  py-[8px]">
-                    {RecentBlogPosts.title3}
-                  </h1>
-                  <p className="text-customGrey">
-                    {RecentBlogPosts.headingExcept3}
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </article>
-          <article className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mt-6">
-            <div className="relative w-full h-0 pb-[56.25%] md:pb-[25.25%]">
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/KnfZLes_Z5I?start=12"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="md:w-[680px] ">
-              <p className="text-customPurple font-bold text-xs">
-              Kemele Victory • 19 Mar 2024
-              </p>
-              <h1 className="text-xl font-bold  py-[8px] ">
-                Values and Variables in Javascript
-              </h1>
-              <p className="text-customGrey">
-                values and variables are part of the fundamentals in Javascript.
-                It is very necessary that we understand these little steps and
-                properties and when to declare them because it will save us from
-                some unnecessary stress and make our coding faster and clear.
-              </p>
-            </div>
+
+
+
+
+          {/*  3 blog*/}
+          <article className="w-full">
+            {tenBlogs.slice(3, 4).map((post) => (
+              <div
+                className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mt-6  md:h-[300px]"
+                key={post.id}
+              >
+                {post.video ? (
+                  <div className="relative w-full h-0 pb-[56%] md:pb-[25.25%]">
+                    <VideoEmbed videoUrl={post.video} />
+                  </div>
+                ) : (
+                  <div className="w-full">
+                    <Image
+                      src={
+                        (post.images && post.images[0]) || "/default-image.jpg"
+                      }
+                      alt={post.title}
+                      width={120}
+                      height={120}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
+                <div className="md:w-[680px] ">
+                  <p className="text-customPurple font-bold text-xs">
+                    Kemele Victory • {formatTime(post.createdAt)}
+                  </p>
+                  <h1 className="text-xl font-bold  py-[8px] ">{post.title}</h1>
+                  <p className="text-customGrey">{post.description}</p>
+                </div>
+              </div>
+            ))}
           </article>
         </section>
 
-        {/* down section */}
-        <section className="md:p-0 my-[3rem]">
-          <h1 className="py-[2rem] text-xl font-bold">
-            {AllBlogPosts[0].category}
-          </h1>
+        {/* down section  blog 5-10 */}
+        <section className="md:p-0 my-[3rem] w-full md:mt-24">
           <article className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
-            {AllBlogPosts.map((post) => (
+            {tenBlogs.slice(5, 10).map((post) => (
               <div key={post.id}>
-                <div className="w-full">
-                  <Image
-                    src={post.blogImg}
-                    alt="blog news"
-                    width={120}
-                    height={120}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                {post.video ? (
+                  <div className="relative w-full h-0 pb-[56.25%] md:pb-[54.25%]">
+                    <VideoEmbed videoUrl={post.video} />
+                  </div>
+                ) : (
+                  <div className="w-full">
+                    <Image
+                      src={
+                        (post.images && post.images[0]) || "/default-image.jpg"
+                      }
+                      alt={post.title}
+                      width={120}
+                      height={120}
+                      className="w-full h-full"
+                    />
+                  </div>
+                )}
                 <div className="flex flex-col">
                   <p className="text-customPurple font-bold text-xs mt-4">
-                    {post.date}
+                    Kemele Victory • {formatTime(post.createdAt)}
                   </p>
                   <h1 className="text-xl font-bold py-[10px] ">{post.title}</h1>
-                  <p className="text-customGrey">{post.headingExcept}</p>
+                  <p className="text-customGrey">{post.description}</p>
                 </div>
               </div>
             ))}

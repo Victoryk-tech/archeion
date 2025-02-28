@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from "mongodb";
 import sendEmail from "../../pages/lib/sendEmail";
 // MongoDB configuration
-const MONGODB_URI = process.env.MONGODB_URL;
+const MONGODB_URI = process.env.MONGO_URL;
 const MONGODB_DB = process.env.MONGODB_DB;
 
 const connectToDatabase = async () => {

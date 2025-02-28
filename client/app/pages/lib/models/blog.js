@@ -18,13 +18,19 @@ const CommentSchema = new mongoose.Schema({
 const BlogSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  body: { type: String },
+  body: { type: String, default: "" },
   category: {
     type: String,
-    enum: ["All Articles", "History", "Designs", "Programming"],
+    enum: ["History", "Designs", "Programming"],
     required: true,
   },
-  images: [String], 
+  images: [String],
+  video: { type: String, default: "" },
+  mediaType: {
+    type: String,
+    enum: ["image", "video"],
+    required: true,
+  },
 
   likes: { type: [String], default: [] },
   comments: [CommentSchema], // Nested comments

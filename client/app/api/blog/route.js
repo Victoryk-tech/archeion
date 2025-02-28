@@ -66,10 +66,11 @@ export async function GET(req) {
 
 export async function POST(req) {
   try {
-    await dbConnect(); // Ensure DB connection is made
+    await connectDB(); // Ensure DB connection is made
 
     // Extract data from the request body
-    const { title, description, category, body, images } = await req.json();
+    const { title, description, category, body, images, video, mediaType } =
+      await req.json();
 
     // Validation: Ensure required fields are present
     if (!title || !description || !category) {
@@ -82,18 +83,31 @@ export async function POST(req) {
       );
     }
 
-    // Validate image array for non-gallery categories
-    if (!images || images.length === 0) {
+    // Ensure only images OR a video link is provided, not both
+    if (images && images.length > 0 && video) {
       return NextResponse.json(
         {
           success: false,
-          message: "At least one image is required.",
+          message:
+            "You can only upload images or provide a video link, not both.",
         },
         { status: 400 }
       );
     }
 
-    // Special handling for "Gallery" category
+    // Validate image array for non-gallery categories
+    if (!video && (!images || images.length === 0)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "You must upload at least one image or provide a video link.",
+        },
+        { status: 400 }
+      );
+    }
+
+    // Special handling for "Designs" category
     if (category === "Designs" && images.length < 1) {
       return NextResponse.json(
         {
@@ -104,26 +118,16 @@ export async function POST(req) {
       );
     }
 
-    // Ensure "History" and "programming" include body content
-    if ((category === "History" || category === "programming") && !body) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Body content is required for this category.",
-        },
-        { status: 400 }
-      );
-    }
-
     // Prepare the blog post object
     const newPost = new Blog({
       title,
       description,
       category,
-      body: category === "Designs" ? undefined : body,
-      images: images.map((img) => img.toString()), // Ensure it's an array of strings
+      body: body || "",
+      images: images?.length ? images.map((img) => img.toString()) : [],
+      video: video || "", // Store video only if no images are present
+      mediaType: mediaType || "image",
     });
-
     // Save the post to the database
     const savedPost = await newPost.save();
 
@@ -144,12 +148,25 @@ export async function POST(req) {
 // PUT - Update a blog post completely
 export async function PUT(req) {
   try {
-    await dbConnect();
-    const { id, title, description, category, body, images } = await req.json();
+    await connectDB();
+    const { id, title, description, category, body, images, video, mediaType } =
+      await req.json();
 
     if (!id) {
       return NextResponse.json(
         { success: false, message: "ID is required." },
+        { status: 400 }
+      );
+    }
+
+    // Ensure at least one media (image or video) is provided
+    if (!video && (!images || images.length === 0)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "You must upload at least one image or provide a video link.",
+        },
         { status: 400 }
       );
     }
@@ -164,9 +181,14 @@ export async function PUT(req) {
       );
     }
 
-    if (!images || images.length === 0) {
+    // Ensure only images OR a video link is provided, not both
+    if (images && images.length > 0 && video) {
       return NextResponse.json(
-        { success: false, message: "At least one image is required." },
+        {
+          success: false,
+          message:
+            "You can only upload images or provide a video link, not both.",
+        },
         { status: 400 }
       );
     }
@@ -177,8 +199,10 @@ export async function PUT(req) {
         title,
         description,
         category,
-        body: category === "gallery" ? undefined : body,
-        images,
+        body: body || "",
+        images: images?.length ? images.map((img) => img.toString()) : [],
+        video: video || "", // Store video only if no images are present
+        mediaType: mediaType || "image",
       },
       { new: true }
     );
@@ -205,9 +229,10 @@ export async function PUT(req) {
 // PATCH - Partially update a blog post
 export async function PATCH(req) {
   try {
-    await dbConnect();
+    await connectDB();
 
-    const { id, title, description, category, body, images } = await req.json();
+    const { id, title, description, category, body, images, video, mediaType } =
+      await req.json();
 
     if (!id) {
       return NextResponse.json(
@@ -220,8 +245,30 @@ export async function PATCH(req) {
     if (title) updateData.title = title;
     if (description) updateData.description = description;
     if (category) updateData.category = category;
-    if (body) updateData.body = category === "gallery" ? undefined : body;
-    if (images && images.length > 0) updateData.images = images;
+    if (typeof body !== "undefined") updateData.body = body || "";
+
+    if (mediaType) updateData.mediaType = mediaType;
+
+    // Ensure only images OR a video link is provided, not both
+    if (images && images.length > 0 && video) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "You can only upload images or provide a video link, not both.",
+        },
+        { status: 400 }
+      );
+    }
+
+    // If updating images or video, enforce mutual exclusivity
+    if (images?.length) {
+      updateData.images = images.map((img) => img.toString());
+      updateData.video = ""; // Clear video if images are added
+    } else if (video) {
+      updateData.video = video;
+      updateData.images = []; // Clear images if a video is added
+    }
 
     const updatedPost = await Blog.findByIdAndUpdate(id, updateData, {
       new: true,
@@ -250,7 +297,11 @@ export async function PATCH(req) {
 
 export async function DELETE(req) {
   try {
-    const { id } = await req.json();
+    await connectDB();
+
+    // Use URL search params for ID
+    const url = new URL(req.url);
+    const id = url.searchParams.get("id");
 
     if (!id) {
       return NextResponse.json(
@@ -259,8 +310,15 @@ export async function DELETE(req) {
       );
     }
 
-    await dbConnect();
+    // Validate if ID is a valid ObjectId
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json(
+        { success: false, message: "Invalid blog ID format." },
+        { status: 400 }
+      );
+    }
 
+    // Perform deletion
     const result = await Blog.deleteOne({ _id: new ObjectId(id) });
 
     if (result.deletedCount === 0) {
@@ -277,10 +335,8 @@ export async function DELETE(req) {
   } catch (error) {
     console.error("Delete Error:", error);
     return NextResponse.json(
-      { success: false, message: "Internal Server Error." },
+      { success: false, message: error.message },
       { status: 500 }
     );
   }
 }
-
-
