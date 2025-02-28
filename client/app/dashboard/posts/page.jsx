@@ -1,18 +1,19 @@
 "use client";
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
-import { MdArrowOutward, MdKeyboardArrowDown } from "react-icons/md";
-import { IoEllipsisHorizontal, IoTrash } from "react-icons/io5";
+import {  MdKeyboardArrowDown } from "react-icons/md";
+import {  IoTrash } from "react-icons/io5";
 
 import { useRouter } from "next/navigation"; // Import useRouter
 import { CiEdit, CiHeart } from "react-icons/ci";
-import { useEffect, useRef, useState } from "react";
+
 import ImageModal from "./ImageModal";
 import PostCard from "./PostCard";
 import Link from "next/link";
-const page = () => {
+
+const Page = () => {
   const router = useRouter(); // Initialize router
   const [activeNav, setActiveNav] = useState("History");
   const [formData, setFormData] = useState({
@@ -315,4 +316,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

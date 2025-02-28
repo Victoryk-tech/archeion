@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import axios from "axios";
+import Image from "next/image";
 
 const categories = ["History", "Designs", "Programming"]; // Define categories
 
@@ -217,13 +218,15 @@ const Page = () => {
             {formData.images.length > 0 && (
               <div className="flex space-x-2 mb-4">
                 {formData.images.map((img, index) => (
-                  <img
+                  <Image
                     key={index}
                     src={
                       typeof img === "string" ? img : URL.createObjectURL(img)
                     }
+                    height={20}
+                    width={20}
                     alt={`Uploaded ${index}`}
-                    className="h-20 w-20 object-cover rounded border"
+                    className=" object-cover rounded border"
                   />
                 ))}
               </div>
