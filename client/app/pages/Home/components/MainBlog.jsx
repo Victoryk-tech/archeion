@@ -1,21 +1,20 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect, useContext } from "react";
-import { RecentBlogPosts, AllBlogPosts } from "../../lib/categories";
+import React, { useContext } from "react";
+
 import { BlogContext } from "../../../contexts/BlogContext";
 import VideoEmbed from "./VideoEmbeded";
 import StarLoader from "../../lib/shared/StarLoader";
+import { FiArrowDownRight } from "react-icons/fi";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const MainBlog = () => {
   const { blogs, loading, formatTime } = useContext(BlogContext);
   const tenBlogs = blogs.slice(0, 10);
 
-
   if (loading) {
-    return (
-     <StarLoader/>
-    );
+    return <StarLoader />;
   }
   return (
     <div>
@@ -52,6 +51,24 @@ const MainBlog = () => {
                     </p>
                     <h1 className="text-xl font-bold py-[8px]">{post.title}</h1>
                     <p className="text-customGrey">{post.description}</p>
+
+                    <div className="mt-6">
+                      {post.category === "History" ? (
+                        <Link
+                          href={`/news/${post.id}`}
+                          className="text-black font-medium flex items-center space-x-2"
+                        >
+                          <p> Read more </p> <FaArrowRightLong size={20} />
+                        </Link>
+                      ) : post.category === "Designs" ? (
+                        <Link
+                          href={`/news/${post.id}`}
+                          className="text-black font-medium flex items-center space-x-2"
+                        >
+                          <p>See more</p> <FaArrowRightLong />
+                        </Link>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -87,18 +104,31 @@ const MainBlog = () => {
                     <p className="text-customPurple font-bold text-xs">
                       Kemele Victory • {formatTime(post.createdAt)}
                     </p>
-                    <h1 className="text-xl font-bold py-[8px]">
-                      {post.title}
-                    </h1>
+                    <h1 className="text-xl font-bold py-[8px]">{post.title}</h1>
                     <p className="text-customGrey">{post.description}</p>
+
+                    <div className="mt-6">
+                      {post.category === "History" ? (
+                        <Link
+                          href={`/news/${post.id}`}
+                          className="text-black font-medium flex items-center space-x-2"
+                        >
+                          <p> Read more </p> <FaArrowRightLong size={20} />
+                        </Link>
+                      ) : post.category === "Designs" ? (
+                        <Link
+                          href={`/news/${post.id}`}
+                          className="text-black font-medium flex items-center space-x-2"
+                        >
+                          <p>See more</p> <FaArrowRightLong />
+                        </Link>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </article>
-
-
-
 
           {/*  3 blog*/}
           <article className="w-full">
@@ -131,6 +161,24 @@ const MainBlog = () => {
                   </p>
                   <h1 className="text-xl font-bold  py-[8px] ">{post.title}</h1>
                   <p className="text-customGrey">{post.description}</p>
+
+                  <div className="mt-6">
+                    {post.category === "History" ? (
+                      <Link
+                        href={`/news/${post.id}`}
+                        className="text-black font-medium flex items-center space-x-2"
+                      >
+                        <p> Read more </p> <FaArrowRightLong size={20} />
+                      </Link>
+                    ) : post.category === "Designs" ? (
+                      <Link
+                        href={`/news/${post.id}`}
+                        className="text-black font-medium flex items-center space-x-2"
+                      >
+                        <p>See more</p> <FaArrowRightLong />
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             ))}
@@ -165,6 +213,24 @@ const MainBlog = () => {
                   </p>
                   <h1 className="text-xl font-bold py-[10px] ">{post.title}</h1>
                   <p className="text-customGrey">{post.description}</p>
+
+                  <div className="mt-6">
+                    {post.category === "History" ? (
+                      <Link
+                        href={`/news/${post.id}`}
+                        className="text-black font-medium flex items-center space-x-2"
+                      >
+                        <p> Read more </p> <FaArrowRightLong size={20} />
+                      </Link>
+                    ) : post.category === "Designs" ? (
+                      <Link
+                        href={`/news/${post.id}`}
+                        className="text-black font-medium flex items-center space-x-2"
+                      >
+                        <p>See more</p> <FaArrowRightLong />
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             ))}
