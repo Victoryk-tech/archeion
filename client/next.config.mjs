@@ -31,10 +31,10 @@ const nextConfig = {
           source: "/api/:path*",
           destination: "/api/:path*", // API routes unchanged
         },
-        // {
-        //   source: "/Media/:path*",
-        //   destination: "/Media/:path*", // Keep media routes functional
-        // },
+        {
+          source: "/news/:path*",
+          destination: "/news/:path*", // Keep media routes functional
+        },
        
       ];
     },

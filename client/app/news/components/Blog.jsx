@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation"; // use usePathname instead of useRouter
@@ -11,14 +10,17 @@ export default function Blog() {
     <div>
       <main className="px-2 md:px-4 lg:px-16">
         <div className="py-1 mb-10 space-x-3 rounded-md  border-[0.7px] border-[#d1d1d1]  w-full md:w-[300px] flex items-center">
-          <FiSearch size={24}/>
-          <input type="text" name="text" placeholder="Search Article" className="w-full outline-none" />
+          <FiSearch size={24} />
+          <input
+            type="text"
+            name="text"
+            placeholder="Search Post"
+            className="w-full outline-none"
+          />
         </div>
 
         <section>
-          <h1 className="mb-[2rem] text-xl font-bold">
-            {RecentBlogPosts.category}
-          </h1>
+          <h1 className="mb-[2rem] text-xl font-bold">Recent Blog Posts</h1>
 
           <article className="flex flex-col lg:flex-row justify-center gap-6  px-[0px] mb-[4rem] md:mb-0 ">
             <div>
