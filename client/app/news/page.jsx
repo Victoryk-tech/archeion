@@ -11,9 +11,7 @@ const page = () => {
     {
       section: <AboutH />,
     },
-    {
-      section: <Blog />,
-    },
+    
   ];
   return (
     <div className="">

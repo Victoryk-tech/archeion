@@ -70,7 +70,7 @@ const Footer = () => {
 
       <div className="py-2 text-center text-[14px] font-normal border-t-[0.8px] border-black ">
         <p className="leading-6 max-w-[1200px] mx-auto">
-          &copy; 2024 Victory Kemele. All Rights Reserved.
+          &copy; 2024 ARCHEION. All Rights Reserved.
         </p>
       </div>
     </div>

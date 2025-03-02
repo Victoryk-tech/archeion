@@ -20,14 +20,14 @@ export const BlogProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
   const [totalBlogs, setTotalBlogs] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [loadin, setLoadin] = useState(true);
+
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState([
     "History",
     "Designs",
     "Programming",
   ]);
-  const [selectedCategory, setSelectedCategory] = useState("Programming");
+  const [selectedCategory, setSelectedCategory] = useState("History");
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -128,7 +128,7 @@ export const BlogProvider = ({ children }) => {
   // media side
 
   const fetchBlogs = async (category) => {
-    setLoadin(true);
+    setLoading(true);
     console.log("Fetching blogs...");
     setError(null);
     try {
@@ -196,9 +196,6 @@ export const BlogProvider = ({ children }) => {
     }
   };
 
-
-
-
   const formatTime = (timestamp) => {
     const now = new Date();
     const postDate = new Date(timestamp);
@@ -206,12 +203,12 @@ export const BlogProvider = ({ children }) => {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-  
+
     if (seconds < 60) return `${seconds} seconds ago`;
     if (minutes < 60) return `${minutes} minutes ago`;
     if (hours < 24) return `${hours} hours ago`;
     if (days < 30) return `${days} days ago`;
-  
+
     // Format: 1 Nov 2023
     return postDate.toLocaleDateString("en-GB", {
       day: "numeric",
@@ -219,13 +216,13 @@ export const BlogProvider = ({ children }) => {
       year: "numeric",
     });
   };
-  
+
   const contextValue = {
     blogs,
     blog,
     totalBlogs,
     loading,
-    loadin,
+
     posts,
     categories,
     selectedCategory,
